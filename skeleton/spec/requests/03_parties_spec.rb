@@ -25,6 +25,7 @@ describe 'Parties' do
 
     it 'the show page shows guests\' gifts' do
       get '/api/parties/2'
+      p json
       expect(json['guests'][0]['gifts'][0]['title']).to eq('Baseball Glove')
       expect(json['guests'][0]['gifts'].count).to eq(2)
     end
