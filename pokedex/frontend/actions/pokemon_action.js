@@ -8,7 +8,7 @@ export const receiveAllPokemon = pokemon => ({
     pokemon: pokemon
 });
 
-export const getAllPokemon = dispatch => {
+export const getAllPokemon = () => dispatch => {
     fetchAllPokemon().then(allPokemon => {
         dispatch(receiveAllPokemon(allPokemon));
     });
