@@ -174,7 +174,6 @@ var Root = function Root(_ref) {
     component: _pokemon_pokemon_detail_container__WEBPACK_IMPORTED_MODULE_4__["default"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
     path: "/",
-    exact: true,
     component: _pokemon_pokemon_index_container__WEBPACK_IMPORTED_MODULE_3__["default"]
   }))));
 };
@@ -231,18 +230,25 @@ function (_React$Component) {
       this.props.requestSinglePokemon(this.props.match.params.pokemonId);
     }
   }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate(prevProps) {
+      if (prevProps.match.params.pokemonId !== this.props.match.params.pokemonId) {
+        this.props.requestSinglePokemon(this.props.match.params.pokemonId);
+      }
+    }
+  }, {
     key: "render",
     value: function render() {
-      debugger;
-
       if (this.props.pokemon) {
         var _this$props = this.props,
             items = _this$props.items,
             pokemon = _this$props.pokemon;
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, pokemon.name);
-      } else {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, " no pokemon yet ");
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          src: pokemon.image_url
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, pokemon.name));
       }
+
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, " no pokemon yet ");
     }
   }]);
 
@@ -345,6 +351,7 @@ function (_React$Component) {
       var pokeItems = this.props.pokemon.map(function (el) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_pokemon_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
           key: el.id,
+          id: el.id,
           img: el.image_url,
           name: el.name
         });
@@ -412,7 +419,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var PokemonIndexItem = function PokemonIndexItem(props) {
-  var link = "/pokemon/".concat(props.key);
+  var link = "/pokemon/".concat(props.id);
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     to: link
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {

@@ -13,7 +13,7 @@ const Root = ({ store }) => (
                     path="/pokemon/:pokemonId"
                     component={PokemonDetailContainer}
                 />
-                <Route path="/" exact component={PokemonIndexContainer} />
+                <Route path="/" component={PokemonIndexContainer} />
             </div>
         </HashRouter>
     </Provider>
